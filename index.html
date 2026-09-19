@@ -1,0 +1,627 @@
+```html
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title id="page-title">Numele firmei</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b0b0b;
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #111;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00c853;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #00c853;
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+
+            background:
+                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)),
+                url("https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #00c853;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #00c853;
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background: #00a844;
+        }
+
+        .button-dark {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .button-dark:hover {
+            background: white;
+            color: black;
+        }
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #aaa;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #151515;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #252525;
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #00c853;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .card p {
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .review {
+            background: #151515;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .review p {
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            color: #ffd000;
+        }
+
+        .contact {
+            text-align: center;
+            background: #111;
+        }
+
+        .contact-info {
+            font-size: 19px;
+            margin: 20px 0;
+        }
+
+        .contact-info p {
+            margin: 10px;
+        }
+
+        footer {
+            background: #050505;
+            text-align: center;
+            padding: 25px;
+            color: #777;
+        }
+
+        .whatsapp {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: #25D366;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            z-index: 2000;
+        }
+
+        @media (max-width: 800px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .services,
+            .gallery,
+            .reviews {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo" id="logo"></div>
+
+    <nav>
+        <a href="#servicii">Servicii</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#recenzii">Recenzii</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            <span id="hero-title"></span>
+        </h1>
+
+        <p id="hero-description"></p>
+
+        <a class="button" href="#contact">
+            Programează-te
+        </a>
+
+        <a class="button button-dark" href="#servicii">
+            Vezi serviciile
+        </a>
+
+    </div>
+
+</section>
+
+
+<section id="servicii">
+
+    <div class="section-title">
+
+        <h2>Serviciile noastre</h2>
+
+        <p>Profesionalism și atenție la fiecare detaliu.</p>
+
+    </div>
+
+    <div class="services" id="services-container"></div>
+
+</section>
+
+
+<section id="galerie">
+
+    <div class="section-title">
+
+        <h2>Galerie</h2>
+
+        <p>Câteva exemple de lucrări.</p>
+
+    </div>
+
+    <div class="gallery" id="gallery-container"></div>
+
+</section>
+
+
+<section id="recenzii">
+
+    <div class="section-title">
+
+        <h2>Ce spun clienții</h2>
+
+        <p>Experiențele clienților noștri.</p>
+
+    </div>
+
+    <div class="reviews" id="reviews-container"></div>
+
+</section>
+
+
+<section id="contact" class="contact">
+
+    <div class="section-title">
+
+        <h2>Programează-te</h2>
+
+        <p>Contactează-ne pentru o programare.</p>
+
+    </div>
+
+    <div class="contact-info">
+
+        <p>📞 Telefon: <span id="phone"></span></p>
+
+        <p>📍 <span id="city"></span></p>
+
+        <p>🕐 <span id="hours"></span></p>
+
+    </div>
+
+    <a class="button" id="call-button">
+        Sună acum
+    </a>
+
+</section>
+
+
+<footer>
+
+    © 2026 <span id="footer-name"></span> — Toate drepturile rezervate.
+
+</footer>
+
+
+<a class="whatsapp" id="whatsapp-button" target="_blank">
+    WhatsApp
+</a>
+
+
+<script>
+
+    /* ==================================================
+       CONFIGURARE SITE
+       MODIFICĂ DOAR ACEASTĂ ZONĂ PENTRU FIECARE FIRMĂ
+       ================================================== */
+
+    const CONFIG = {
+
+        /* INFORMAȚII FIRMĂ */
+
+        name: "Auto Detailing Constanta",
+
+        city: "Constanța, România",
+
+        phone: "0723 188 536",
+        
+        phoneLink: "40723188536",
+
+        hours: "Luni - Vineri: 09:00 - 17:00 | Sambata: 09:00 - 14:00",
+
+
+        /* TEXT PRINCIPAL */
+
+        heroTitle: "Mașina ta merită mai mult.",
+
+        heroDescription:
+            "Detailing auto premium pentru un interior impecabil și un exterior care atrage priviri.",
+
+
+        /* POZA PRINCIPALĂ */
+
+        heroImage:
+            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1600&q=80",
+
+
+        /* SERVICII */
+
+        services: [
+
+            {
+                name: "Detailing Interior",
+                description:
+                    "Curățare profundă a scaunelor, bordului, mochetelor și tuturor suprafețelor interioare.",
+                price: "de la 250 lei"
+            },
+
+            {
+                name: "Detailing Exterior",
+                description:
+                    "Spălare profesională, decontaminare și finisare pentru un exterior impecabil.",
+                price: "de la 200 lei"
+            },
+
+            {
+                name: "Polish Auto",
+                description:
+                    "Reducerea zgârieturilor și redarea luciului original al vopselei.",
+                price: "de la 500 lei"
+            }
+
+        ],
+
+
+        /* POZE GALERIE */
+
+        gallery: [
+
+            "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",
+
+        "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=900&q=80",
+
+        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80"
+
+        ],
+
+
+        /* RECENZII
+           Pentru demo pot rămâne exemple.
+           Pentru un client real folosește doar recenzii reale. */
+
+        reviews: [
+
+            {
+                text: "Mașina arată incredibil. Interiorul pare efectiv nou!",
+                stars: "★★★★★"
+            },
+
+            {
+                text: "Foarte atenți la detalii și foarte profesioniști. Recomand!",
+                stars: "★★★★★"
+            },
+
+            {
+                text: "Servicii excelente și rezultat peste așteptări.",
+                stars: "★★★★★"
+            }
+
+        ]
+
+    };
+
+
+    /* ==================================================
+       NU MODIFICA DE AICI ÎN JOS
+       ================================================== */
+
+
+    document.title = CONFIG.name;
+
+    document.getElementById("logo").innerHTML =
+        CONFIG.name;
+
+    document.getElementById("hero-title").innerHTML =
+        CONFIG.heroTitle;
+
+    document.getElementById("hero-description").innerHTML =
+        CONFIG.heroDescription;
+
+    document.getElementById("phone").textContent =
+        CONFIG.phone;
+
+    document.getElementById("city").textContent =
+        CONFIG.city;
+
+    document.getElementById("hours").textContent =
+        CONFIG.hours;
+
+    document.getElementById("footer-name").textContent =
+        CONFIG.name;
+
+
+    /* POZA HERO */
+
+    document.querySelector(".hero").style.backgroundImage =
+        `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)), url("${CONFIG.heroImage}")`;
+
+
+    /* TELEFON */
+
+    const callButton =
+        document.getElementById("call-button");
+
+    callButton.href =
+        "tel:+" + CONFIG.phoneLink;
+
+
+    /* WHATSAPP */
+
+    const whatsappButton =
+        document.getElementById("whatsapp-button");
+
+    whatsappButton.href =
+        "https://wa.me/" + CONFIG.phoneLink;
+
+
+    /* SERVICII */
+
+    const servicesContainer =
+        document.getElementById("services-container");
+
+    CONFIG.services.forEach(service => {
+
+        servicesContainer.innerHTML += `
+
+            <div class="card">
+
+                <h3>${service.name}</h3>
+
+                <p>${service.description}</p>
+
+                <div class="price">
+                    ${service.price}
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    /* GALERIE */
+
+    const galleryContainer =
+        document.getElementById("gallery-container");
+
+    CONFIG.gallery.forEach(image => {
+
+        galleryContainer.innerHTML += `
+
+            <img src="${image}" alt="${CONFIG.name}">
+
+        `;
+
+    });
+
+
+    /* RECENZII */
+
+    const reviewsContainer =
+        document.getElementById("reviews-container");
+
+    CONFIG.reviews.forEach(review => {
+
+        reviewsContainer.innerHTML += `
+
+            <div class="review">
+
+                <p>
+                    „${review.text}”
+                </p>
+
+                <div class="stars">
+                    ${review.stars}
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+</script>
+
+</body>
+</html>
+```
