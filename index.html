@@ -1,13 +1,16 @@
-```html
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title id="page-title">Numele firmei</title>
+    <title id="page-title">TJ's Valeting Services</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -19,42 +22,44 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             background: #0b0b0b;
             color: white;
             line-height: 1.6;
         }
 
         header {
-            background: #111;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid #222;
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
+        header h2 {
+            font-size: 22px;
+            color: #ffffff;
         }
 
-        .logo span {
-            color: #00c853;
+        nav {
+            display: flex;
+            gap: 25px;
         }
 
         nav a {
-            color: white;
+            color: #ffffff;
             text-decoration: none;
-            margin-left: 25px;
-            font-weight: bold;
+            font-size: 15px;
+            transition: 0.3s;
         }
 
         nav a:hover {
-            color: #00c853;
+            color: #25d366;
         }
 
         .hero {
@@ -64,11 +69,6 @@
             justify-content: center;
             text-align: center;
             padding: 40px 20px;
-
-            background:
-                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)),
-                url("https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1600&q=80");
-
             background-size: cover;
             background-position: center;
         }
@@ -78,49 +78,54 @@
         }
 
         .hero h1 {
-            font-size: 55px;
-            line-height: 1.15;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #00c853;
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 1.05;
+            margin-bottom: 25px;
         }
 
         .hero p {
-            font-size: 20px;
-            color: #ddd;
-            margin-bottom: 30px;
+            font-size: 19px;
+            color: #dddddd;
+            margin-bottom: 35px;
         }
 
-        .button {
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
             display: inline-block;
-            background: #00c853;
-            color: #000;
-            padding: 15px 30px;
+            padding: 14px 25px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            margin: 5px;
+            transition: 0.3s;
         }
 
-        .button:hover {
-            background: #00a844;
+        .btn-primary {
+            background: #25d366;
+            color: #000;
         }
 
-        .button-dark {
-            background: transparent;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #20bd5a;
+        }
+
+        .btn-secondary {
+            border: 1px solid #555;
             color: white;
-            border: 2px solid white;
         }
 
-        .button-dark:hover {
-            background: white;
-            color: black;
+        .btn-secondary:hover {
+            background: #222;
         }
 
         section {
-            padding: 80px 8%;
+            padding: 90px 6%;
         }
 
         .section-title {
@@ -129,7 +134,7 @@
         }
 
         .section-title h2 {
-            font-size: 38px;
+            font-size: 40px;
             margin-bottom: 10px;
         }
 
@@ -137,277 +142,428 @@
             color: #aaa;
         }
 
-        .services {
+        .services-grid {
+            max-width: 1200px;
+            margin: auto;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
 
-        .card {
+        .service-card {
             background: #151515;
-            padding: 30px;
-            border-radius: 12px;
             border: 1px solid #252525;
-            text-align: center;
+            border-radius: 14px;
+            padding: 28px;
+            transition: 0.3s;
         }
 
-        .card h3 {
-            color: #00c853;
-            margin-bottom: 15px;
-            font-size: 24px;
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #25d366;
         }
 
-        .card p {
-            color: #bbb;
+        .service-card h3 {
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .service-card p {
+            color: #aaa;
+            font-size: 14px;
             margin-bottom: 20px;
         }
 
         .price {
-            font-size: 25px;
+            color: #25d366;
             font-weight: bold;
+            font-size: 18px;
         }
 
-        .gallery {
+        .gallery-grid {
+            max-width: 1200px;
+            margin: auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
-        .gallery img {
+        .gallery-grid img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.3s;
+            border-radius: 14px;
+            transition: 0.3s;
         }
 
-        .gallery img:hover {
-            transform: scale(1.03);
+        .gallery-grid img:hover {
+            transform: scale(1.02);
         }
 
-        .reviews {
+        .reviews-grid {
+            max-width: 1000px;
+            margin: auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            gap: 20px;
         }
 
-        .review {
+        .review-card {
             background: #151515;
-            padding: 25px;
-            border-radius: 12px;
-        }
-
-        .review p {
-            color: #ccc;
-            margin-bottom: 15px;
+            border: 1px solid #252525;
+            border-radius: 14px;
+            padding: 30px;
         }
 
         .stars {
-            color: #ffd000;
+            color: #ffd700;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
         }
 
-        .contact {
+        .review-card p {
+            color: #ccc;
+        }
+
+        .contact-section {
+            background: #101010;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: auto;
             text-align: center;
-            background: #111;
         }
 
         .contact-info {
-            font-size: 19px;
-            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+            margin-bottom: 35px;
         }
 
-        .contact-info p {
-            margin: 10px;
+        .contact-box {
+            background: #181818;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #252525;
+        }
+
+        .contact-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .contact-box p {
+            color: #aaa;
         }
 
         footer {
-            background: #050505;
             text-align: center;
-            padding: 25px;
+            padding: 30px 20px;
             color: #777;
+            border-top: 1px solid #222;
         }
 
         .whatsapp {
             position: fixed;
             right: 20px;
             bottom: 20px;
-            background: #25D366;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25d366;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-decoration: none;
+            font-size: 26px;
             font-weight: bold;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
             z-index: 2000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
         }
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
 
             header {
                 flex-direction: column;
+                gap: 12px;
+            }
+
+            nav {
                 gap: 15px;
             }
 
             nav a {
-                margin: 0 7px;
-                font-size: 14px;
-            }
-
-            .hero h1 {
-                font-size: 38px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            .services,
-            .gallery,
-            .reviews {
-                grid-template-columns: 1fr;
+                font-size: 13px;
             }
 
             section {
-                padding: 60px 5%;
+                padding: 70px 5%;
             }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid img {
+                height: 240px;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <header>
 
-    <div class="logo" id="logo"></div>
+    <h2 id="logo">TJ's Valeting Services</h2>
 
     <nav>
-        <a href="#servicii">Servicii</a>
-        <a href="#galerie">Galerie</a>
-        <a href="#recenzii">Recenzii</a>
+
+        <a href="#services">Services</a>
+
+        <a href="#gallery">Gallery</a>
+
+        <a href="#reviews">Reviews</a>
+
         <a href="#contact">Contact</a>
+
     </nav>
 
 </header>
+
 
 
 <section class="hero">
 
     <div class="hero-content">
 
-        <h1>
-            <span id="hero-title"></span>
+        <h1 id="hero-title">
+            Professional Mobile Valeting
         </h1>
 
-        <p id="hero-description"></p>
+        <p id="hero-description">
+            Professional mobile valeting and detailing across the Black Country, Birmingham and surrounding areas.
+        </p>
 
-        <a class="button" href="#contact">
-            Programează-te
+        <div class="buttons">
+
+            <a
+                id="call-button"
+                href="#"
+                class="btn btn-primary">
+                Call Now
+            </a>
+
+            <a
+                href="#services"
+                class="btn btn-secondary">
+                View Services
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section id="services">
+
+    <div class="section-title">
+
+        <h2>Our Services</h2>
+
+        <p>Professional vehicle care for a clean and refreshed finish.</p>
+
+    </div>
+
+    <div
+        id="services-container"
+        class="services-grid">
+    </div>
+
+</section>
+
+
+
+<section id="gallery">
+
+    <div class="section-title">
+
+        <h2>Gallery</h2>
+
+        <p>A selection of vehicle detailing and valeting work.</p>
+
+    </div>
+
+    <div
+        id="gallery-container"
+        class="gallery-grid">
+    </div>
+
+</section>
+
+
+
+<section id="reviews">
+
+    <div class="section-title">
+
+        <h2>Reviews</h2>
+
+        <p>What customers can expect from the service.</p>
+
+    </div>
+
+    <div
+        id="reviews-container"
+        class="reviews-grid">
+    </div>
+
+</section>
+
+
+
+<section
+    id="contact"
+    class="contact-section">
+
+    <div class="contact-container">
+
+        <div class="section-title">
+
+            <h2>Book Your Valet</h2>
+
+            <p>
+                Get in touch to discuss your vehicle and book a service.
+            </p>
+
+        </div>
+
+
+        <div class="contact-info">
+
+            <div class="contact-box">
+
+                <h3>Phone</h3>
+
+                <p id="phone">
+                    07715 924762
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <h3>Area</h3>
+
+                <p id="city">
+                    Dudley, West Midlands
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <h3>Opening Hours</h3>
+
+                <p id="hours">
+                    Mon - Fri: 08:00 - 17:00 | Sat - Sun: 08:00 - 12:00
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a
+            id="contact-button"
+            href="#"
+            class="btn btn-primary">
+            Call Now
         </a>
 
-        <a class="button button-dark" href="#servicii">
-            Vezi serviciile
-        </a>
-
     </div>
 
 </section>
 
-
-<section id="servicii">
-
-    <div class="section-title">
-
-        <h2>Serviciile noastre</h2>
-
-        <p>Profesionalism și atenție la fiecare detaliu.</p>
-
-    </div>
-
-    <div class="services" id="services-container"></div>
-
-</section>
-
-
-<section id="galerie">
-
-    <div class="section-title">
-
-        <h2>Galerie</h2>
-
-        <p>Câteva exemple de lucrări.</p>
-
-    </div>
-
-    <div class="gallery" id="gallery-container"></div>
-
-</section>
-
-
-<section id="recenzii">
-
-    <div class="section-title">
-
-        <h2>Ce spun clienții</h2>
-
-        <p>Experiențele clienților noștri.</p>
-
-    </div>
-
-    <div class="reviews" id="reviews-container"></div>
-
-</section>
-
-
-<section id="contact" class="contact">
-
-    <div class="section-title">
-
-        <h2>Programează-te</h2>
-
-        <p>Contactează-ne pentru o programare.</p>
-
-    </div>
-
-    <div class="contact-info">
-
-        <p>📞 Telefon: <span id="phone"></span></p>
-
-        <p>📍 <span id="city"></span></p>
-
-        <p>🕐 <span id="hours"></span></p>
-
-    </div>
-
-    <a class="button" id="call-button">
-        Sună acum
-    </a>
-
-</section>
 
 
 <footer>
 
-    © 2026 <span id="footer-name"></span> — Toate drepturile rezervate.
+    © 2026
+    <span id="footer-name">
+        TJ's Valeting Services
+    </span>
+    — All rights reserved.
 
 </footer>
 
 
-<a class="whatsapp" id="whatsapp-button" target="_blank">
-    WhatsApp
+
+<a
+    id="whatsapp-button"
+    class="whatsapp"
+    href="#"
+    target="_blank"
+    aria-label="WhatsApp">
+
+    ☎
+
 </a>
+
 
 
 <script>
 
-    /* ==================================================
-       CONFIGURARE SITE
-       MODIFICĂ DOAR ACEASTĂ ZONĂ PENTRU FIECARE FIRMĂ
-       ================================================== */
+
+/* =========================================
+   BUSINESS CONFIGURATION
+========================================= */
 
 
 const CONFIG = {
 
-    /* INFORMAȚII FIRMĂ */
+    /* BUSINESS INFORMATION */
 
     name: "TJ's Valeting Services",
 
@@ -420,7 +576,7 @@ const CONFIG = {
     hours: "Mon - Fri: 08:00 - 17:00 | Sat - Sun: 08:00 - 12:00",
 
 
-    /* TEXT PRINCIPAL */
+    /* MAIN TEXT */
 
     heroTitle: "Professional Mobile Valeting",
 
@@ -428,76 +584,92 @@ const CONFIG = {
         "Professional mobile valeting and detailing across the Black Country, Birmingham and surrounding areas.",
 
 
-    /* POZA PRINCIPALĂ */
+    /* HERO IMAGE */
 
     heroImage:
         "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80",
 
 
-    /* SERVICII */
+    /* SERVICES */
 
     services: [
 
         {
             name: "Mini Valet",
+
             description:
                 "A professional mini valet to refresh your vehicle and keep it looking clean.",
+
             price: "From £25"
         },
 
         {
             name: "Full Valet",
+
             description:
                 "A complete valet designed to give your vehicle a deep and thorough clean.",
+
             price: "From £50"
         },
 
         {
             name: "Interior Valet",
+
             description:
                 "Detailed interior cleaning including seats, carpets and interior surfaces.",
+
             price: "From £30"
         },
 
         {
             name: "Exterior Valet",
+
             description:
                 "Professional exterior cleaning to restore your vehicle's clean and fresh appearance.",
+
             price: "From £30"
         },
 
         {
             name: "Stage 1 Machine Polish",
+
             description:
                 "Machine polishing to improve paintwork gloss and reduce imperfections.",
+
             price: "From £150"
         },
 
         {
             name: "Stage 2 Machine Polish",
+
             description:
                 "More intensive machine polishing for enhanced paint correction and finish.",
+
             price: "From £225"
         },
 
         {
             name: "Headlight Restoration",
+
             description:
                 "Professional headlight restoration to improve appearance and clarity.",
+
             price: "£45"
         },
 
         {
             name: "Engine Bay Cleaning",
+
             description:
                 "Careful cleaning of the engine bay to give it a cleaner, fresher appearance.",
+
             price: "From £30"
         }
 
     ],
 
 
-    /* POZE GALERIE */
+    /* GALLERY */
 
     gallery: [
 
@@ -510,22 +682,25 @@ const CONFIG = {
     ],
 
 
-    /* RECENZII / SOCIAL PROOF */
+    /* SOCIAL PROOF */
 
     reviews: [
 
         {
             text: "Rated 4.9 out of 5 based on 12 public reviews.",
+
             stars: "★★★★★"
         },
 
         {
             text: "Professional mobile valeting and detailing service serving Dudley, Birmingham and surrounding areas.",
+
             stars: "★★★★★"
         },
 
         {
             text: "Established mobile valeting service with a range of interior, exterior and machine polishing services.",
+
             stars: "★★★★★"
         }
 
@@ -535,129 +710,182 @@ const CONFIG = {
 
 
 
-
-    /* ==================================================
-       NU MODIFICA DE AICI ÎN JOS
-       ================================================== */
-
-
-    document.title = CONFIG.name;
-
-    document.getElementById("logo").innerHTML =
-        CONFIG.name;
-
-    document.getElementById("hero-title").innerHTML =
-        CONFIG.heroTitle;
-
-    document.getElementById("hero-description").innerHTML =
-        CONFIG.heroDescription;
-
-    document.getElementById("phone").textContent =
-        CONFIG.phone;
-
-    document.getElementById("city").textContent =
-        CONFIG.city;
-
-    document.getElementById("hours").textContent =
-        CONFIG.hours;
-
-    document.getElementById("footer-name").textContent =
-        CONFIG.name;
+/* =========================================
+   GENERAL INFORMATION
+========================================= */
 
 
-    /* POZA HERO */
+document.title = CONFIG.name;
 
-    document.querySelector(".hero").style.backgroundImage =
-        `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)), url("${CONFIG.heroImage}")`;
+document.getElementById("logo").textContent =
+    CONFIG.name;
 
+document.getElementById("hero-title").textContent =
+    CONFIG.heroTitle;
 
-    /* TELEFON */
+document.getElementById("hero-description").textContent =
+    CONFIG.heroDescription;
 
-    const callButton =
-        document.getElementById("call-button");
+document.getElementById("phone").textContent =
+    CONFIG.phone;
 
-    callButton.href =
-        "tel:+" + CONFIG.phoneLink;
+document.getElementById("city").textContent =
+    CONFIG.city;
 
+document.getElementById("hours").textContent =
+    CONFIG.hours;
 
-    /* WHATSAPP */
-
-    const whatsappButton =
-        document.getElementById("whatsapp-button");
-
-    whatsappButton.href =
-        "https://wa.me/" + CONFIG.phoneLink;
-
-
-    /* SERVICII */
-
-    const servicesContainer =
-        document.getElementById("services-container");
-
-    CONFIG.services.forEach(service => {
-
-        servicesContainer.innerHTML += `
-
-            <div class="card">
-
-                <h3>${service.name}</h3>
-
-                <p>${service.description}</p>
-
-                <div class="price">
-                    ${service.price}
-                </div>
-
-            </div>
-
-        `;
-
-    });
+document.getElementById("footer-name").textContent =
+    CONFIG.name;
 
 
-    /* GALERIE */
 
-    const galleryContainer =
-        document.getElementById("gallery-container");
-
-    CONFIG.gallery.forEach(image => {
-
-        galleryContainer.innerHTML += `
-
-            <img src="${image}" alt="${CONFIG.name}">
-
-        `;
-
-    });
+/* =========================================
+   HERO BACKGROUND
+========================================= */
 
 
-    /* RECENZII */
+document.querySelector(".hero").style.backgroundImage =
+    `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)), url("${CONFIG.heroImage}")`;
 
-    const reviewsContainer =
-        document.getElementById("reviews-container");
 
-    CONFIG.reviews.forEach(review => {
 
-        reviewsContainer.innerHTML += `
+/* =========================================
+   PHONE BUTTON
+========================================= */
 
-            <div class="review">
 
-                <p>
-                    „${review.text}”
-                </p>
+const callButton =
+    document.getElementById("call-button");
 
-                <div class="stars">
-                    ${review.stars}
-                </div>
+callButton.href =
+    "tel:+" + CONFIG.phoneLink;
 
-            </div>
 
-        `;
 
-    });
+/* =========================================
+   CONTACT BUTTON
+========================================= */
+
+
+const contactButton =
+    document.getElementById("contact-button");
+
+contactButton.href =
+    "tel:+" + CONFIG.phoneLink;
+
+
+
+/* =========================================
+   WHATSAPP
+========================================= */
+
+
+const whatsappButton =
+    document.getElementById("whatsapp-button");
+
+whatsappButton.href =
+    "https://wa.me/" + CONFIG.phoneLink;
+
+
+
+/* =========================================
+   SERVICES
+========================================= */
+
+
+const servicesContainer =
+    document.getElementById("services-container");
+
+
+CONFIG.services.forEach(service => {
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "service-card";
+
+    card.innerHTML = `
+
+        <h3>${service.name}</h3>
+
+        <p>${service.description}</p>
+
+        <div class="price">
+            ${service.price}
+        </div>
+
+    `;
+
+    servicesContainer.appendChild(card);
+
+});
+
+
+
+/* =========================================
+   GALLERY
+========================================= */
+
+
+const galleryContainer =
+    document.getElementById("gallery-container");
+
+
+CONFIG.gallery.forEach(image => {
+
+    const img =
+        document.createElement("img");
+
+    img.src = image;
+
+    img.alt =
+        CONFIG.name + " vehicle detailing";
+
+    galleryContainer.appendChild(img);
+
+});
+
+
+
+/* =========================================
+   REVIEWS
+========================================= */
+
+
+const reviewsContainer =
+    document.getElementById("reviews-container");
+
+
+CONFIG.reviews.forEach(review => {
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "review-card";
+
+    card.innerHTML = `
+
+        <div class="stars">
+            ${review.stars}
+        </div>
+
+        <p>
+            ${review.text}
+        </p>
+
+    `;
+
+    reviewsContainer.appendChild(card);
+
+});
+
 
 </script>
 
+
 </body>
+
 </html>
-```
